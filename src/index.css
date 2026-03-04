@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-primary-dark: var(--bg-primary);
+  --color-surface: var(--bg-surface);
+  --color-border-custom: var(--border-color);
+  --color-accent-primary: #FF6B35;
+  --color-accent-secondary: #FFD700;
+  --color-success: #4ADE80;
+  --color-warning: #FDE047;
+  --color-error: #F87171;
+  
+  --color-text-primary: var(--text-main);
+  --color-text-secondary: var(--text-muted);
+  --color-text-tertiary: var(--text-dim);
+}
+
+:root {
+  --bg-primary: #0F0F0F;
+  --bg-surface: #1a1a1a;
+  --border-color: #2d2d2d;
+  --text-main: #FFFFFF;
+  --text-muted: #A3A3A3;
+  --text-dim: #737373;
+}
+
+.light {
+  --bg-primary: #F5F5F5;
+  --bg-surface: #FFFFFF;
+  --border-color: #E5E5E5;
+  --text-main: #171717;
+  --text-muted: #525252;
+  --text-dim: #737373;
+}
+
+@layer base {
+  body {
+    @apply bg-primary-dark text-text-primary font-sans antialiased selection:bg-accent-primary/30;
+    letter-spacing: -0.015em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply h-[56px] px-6 bg-accent-primary text-white font-semibold rounded-lg flex items-center justify-center gap-2 transition-all active:scale-95 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply h-[56px] px-6 border-2 border-border-custom bg-transparent text-white font-semibold rounded-lg flex items-center justify-center gap-2 transition-all active:scale-95 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-tertiary {
+    @apply h-[48px] px-4 text-accent-primary font-medium flex items-center justify-center gap-2 transition-all active:scale-95 disabled:opacity-50;
+  }
+
+  .card {
+    @apply bg-surface border border-border-custom rounded-lg p-4;
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-primary-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border-custom rounded-full;
+}
+
+/* Skeleton Pulse */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

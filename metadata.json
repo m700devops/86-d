@@ -1,0 +1,8 @@
+{
+  "name": "86'd - Professional Bar Inventory",
+  "description": "High-pressure bar inventory and ordering system with AI-powered bottle scanning and liquid level detection.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
